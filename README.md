@@ -1,3 +1,3 @@
 # Lets get started
 
-It has a cloned frontend website
+It has a product gallery website
