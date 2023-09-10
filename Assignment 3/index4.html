@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fictional Bookstore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            nav {
+                text-align: right;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 40px;
+                right: 10px;
+                background-color: #444;
+                padding: 10px;
+                border-radius: 5px;
+                z-index: 1;
+            }
+
+            nav ul li {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                font-size: 24px;
+                color: white;
+            }
+
+            nav ul.show {
+                display: block;
+            }
+
+            .cart {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 15px 15px 0 0; /* Add margin to the top and right */
+            }
+        }
+
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .book {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        .book img {
+            max-width: 100%;
+        }
+
+        .cart {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fictional Bookstore</h1>
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>Featured Books</h2>
+    <div class="book-container">
+        <div class="book">
+            <img src="book1.jpeg" alt="Book 1">
+            <h3>Book 1</h3>
+            <p>James Clear</p>
+        </div>
+        <div class="book">
+            <img src="book2.jpeg" alt="Book 2">
+            <h3>Book 2</h3>
+            <p>Morgen Housel</p>
+        </div>
+    </div>
+
+    <h2>All Books</h2>
+    <div class="book-container">
+        <div class="book">
+            <img src="book3.jpeg" alt="Book 3">
+            <h3>Book 3</h3>
+            <p>The Manly Boy</p>
+            <button onclick="addToCart('Book 3')">Add to Cart</button>
+        </div>
+        <div class="book">
+            <img src="book4.jpeg" alt="Book 4">
+            <h3>Book 4</h3>
+            <p>Mark Manson</p>
+            <button onclick="addToCart('Book 4')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart-count" class="cart" onclick="showCart()">0</div>
+
+    <script>
+        let cart = [];
+        
+        function addToCart(bookTitle) {
+            cart.push(bookTitle);
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cartCount = document.getElementById("cart-count");
+            cartCount.textContent = cart.length;
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector("nav ul");
+            navList.classList.toggle("show");
+        }
+
+        function showCart() {
+            alert("Items in Cart: " + cart.join(", "));
+        }
+    </script>
+</body>
+</html>
