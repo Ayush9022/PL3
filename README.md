@@ -1,3 +1,3 @@
 # Lets get started
 
-It has a product gallery website
+PL3 Assignments folder
